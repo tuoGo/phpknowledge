@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-08-10 18:35:04
+Date: 2017-08-10 19:31:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -608,10 +608,29 @@ CREATE TABLE `sanda_log` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for sanda_member
+-- Table structure for sanda_manage
 -- ----------------------------
-DROP TABLE IF EXISTS `sanda_member`;
-CREATE TABLE `sanda_member` (
+DROP TABLE IF EXISTS `sanda_manage`;
+CREATE TABLE `sanda_manage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `sex` varchar(3) DEFAULT NULL,
+  `phone` int(11) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sanda_manage
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for sanda_member_card
+-- ----------------------------
+DROP TABLE IF EXISTS `sanda_member_card`;
+CREATE TABLE `sanda_member_card` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
@@ -626,11 +645,29 @@ CREATE TABLE `sanda_member` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='vip列表';
 
 -- ----------------------------
--- Records of sanda_member
+-- Records of sanda_member_card
 -- ----------------------------
-INSERT INTO `sanda_member` VALUES ('1', '威风会员', '5万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/YJxxFLoBk09KTOYZW8I21h6Qo3NgQ7YMbtKfjcO0.png', '0.96', '1', '127', '40', '0.80', '1.10');
-INSERT INTO `sanda_member` VALUES ('2', '铂金会员', '30万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/UUj4xLPh9Aau6fvpxzPbakfnvxCvXMLzSngGxIzt.png', '0.96', '4', '127', '100', '0.50', '1.30');
-INSERT INTO `sanda_member` VALUES ('3', '黑金会员', '80万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/oAq2I7JmbqmRV5DeGLpjk5IutcnZ6WUiyMwFmcta.png', '0.96', '12', '127', '0', '0.00', '1.50');
+INSERT INTO `sanda_member_card` VALUES ('1', '威风会员', '5万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/YJxxFLoBk09KTOYZW8I21h6Qo3NgQ7YMbtKfjcO0.png', '0.96', '1', '127', '40', '0.80', '1.10');
+INSERT INTO `sanda_member_card` VALUES ('2', '铂金会员', '30万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/UUj4xLPh9Aau6fvpxzPbakfnvxCvXMLzSngGxIzt.png', '0.96', '4', '127', '100', '0.50', '1.30');
+INSERT INTO `sanda_member_card` VALUES ('3', '黑金会员', '80万', 'http://vfly-cdn.joyingnet.com/storage/app/upload/oAq2I7JmbqmRV5DeGLpjk5IutcnZ6WUiyMwFmcta.png', '0.96', '12', '127', '0', '0.00', '1.50');
+
+-- ----------------------------
+-- Table structure for sanda_member_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sanda_member_user`;
+CREATE TABLE `sanda_member_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '会员ID',
+  `name` varchar(20) NOT NULL COMMENT '会员姓名',
+  `age` int(11) DEFAULT NULL,
+  `sex` varchar(3) DEFAULT NULL,
+  `phone` int(11) NOT NULL COMMENT '手机号',
+  `create_time` datetime DEFAULT NULL COMMENT '申请时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sanda_member_user
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sanda_menu
