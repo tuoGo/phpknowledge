@@ -7,3 +7,25 @@ RewriteRule ^(.*)$ /index.php?/$1 [L]
 
 域名重写时注意一下xxx.ini文件 这个可能出问题 需屏蔽。
 
+获取Headers信息，作用于token验证等
+function get_all_headers(){
+
+    // 忽略获取的header数据
+    $ignore = array('host','accept','content-length','content-type');
+
+    $headers = array();
+
+    foreach($_SERVER as $key=>$value){
+        if(substr($key, 0, 5)==='HTTP_'){
+            $key = substr($key, 5);
+            $key = str_replace('_', ' ', $key);
+            $key = str_replace(' ', '-', $key);
+            $key = strtolower($key);
+
+            if(!in_array($key, $ignore)){
+                $headers[$key] = $value;
+            }
+        }
+    }
+
+    return $headers;
